@@ -1,0 +1,97 @@
+{% extends "../base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+{% endblock %}
+{% block content %}
+<main class="container mx-auto px-4 py-8 grid grid-cols-[1fr_minmax(0,3fr)] gap-8">
+    <aside class="sticky top-8 self-start">
+        <h2 class="text-lg font-semibold mb-2">Table of Contents</h2>
+        <nav id="toc" class="space-y-1">
+        </nav>
+    </aside>
+    <article class="prose prose-lg max-w-3xl w-full break-words break-normal article-links">
+        <header class="mb-4">
+            <h1 class="text-3xl font-semibold"> {{ page.title }}</h1>
+            <time datetime="2023-10-27" class="text-sm text-gray-400">{{ page.date }}</time>
+        </header>
+        {{ page.content }}
+    </article>
+</main>
+
+{% endblock %}
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        hljs.highlightAll();
+        wrapCodeBlocks();
+    });
+
+    function generateToc() {
+        const toc = document.getElementById('toc');
+        const headers = document.querySelectorAll('article h2, article h3, article h4, article h5, article h6');
+
+        headers.forEach(header => {
+            const id = header.textContent.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+            header.id = id;
+
+            const link = document.createElement('a');
+            link.href = `#${id}`;
+            link.textContent = header.textContent;
+            link.classList.add('block', 'hover:text-gray-400', 'py-1');
+
+            // add indentation based on header level
+            if (header.tagName === 'H3') {
+                link.classList.add('ml-4');
+            } else if (header.tagName === 'H4') {
+                link.classList.add('ml-6');
+            } else if (header.tagName === 'H5') {
+                link.classList.add('ml-8');
+            } else if (header.tagName === 'H6') {
+                link.classList.add('ml-10');
+            }
+
+            toc.appendChild(link);
+        });
+    }
+
+
+    function styleHeaders() {
+        const h1Elements = document.querySelectorAll('article h1');
+        const h2Elements = document.querySelectorAll('article h2');
+        const h3Elements = document.querySelectorAll('article h3');
+        const h4Elements = document.querySelectorAll('article h4');
+        const h5Elements = document.querySelectorAll('article h5');
+        const h6Elements = document.querySelectorAll('article h6');
+
+        h1Elements.forEach(h1 => {
+            h1.classList.add('text-4xl', 'font-semibold', 'mt-6', 'mb-2');
+        });
+
+        h2Elements.forEach(h2 => {
+            h2.classList.add('text-3xl', 'font-semibold', 'mt-4', 'mb-2');
+        });
+
+        h3Elements.forEach(h3 => {
+            h3.classList.add('text-2xl', 'font-semibold', 'mt-4', 'mb-2');
+        });
+
+        h4Elements.forEach(h4 => {
+            h4.classList.add('text-xl', 'font-semibold', 'mt-4', 'mb-2');
+        });
+
+        h5Elements.forEach(h5 => {
+            h5.classList.add('text-lg', 'font-semibold', 'mt-4', 'mb-2');
+        });
+
+        h6Elements.forEach(h6 => {
+            h6.classList.add('text-base', 'font-semibold', 'mt-4', 'mb-2');
+        });
+    }
+
+    generateToc();
+    styleHeaders();
+</script>
+{% endblock %}

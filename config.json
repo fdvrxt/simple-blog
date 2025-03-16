@@ -1,0 +1,9 @@
+{
+    "templates": 
+    {
+        "index" : "templates/index.html",
+        "post"  : "templates/post.html"  
+    },
+	"default": "post",
+    "assets-directory": "assets"
+}

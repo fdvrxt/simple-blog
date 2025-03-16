@@ -1,0 +1,23 @@
+{% extends "../base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+<main class="container mx-auto px-4 py-12">
+    {% for page in pages %}
+        {% if "title" not in page %}
+            <article class="prose prose-lg max-w-3xl mx-auto mb-12 p-6 rounded-xl bg-gray-900 border border-gray-700 shadow-md">
+                <header class="mb-4 border-b border-gray-700 pb-3">
+                    <h2 class="text-2xl font-bold text-gray-100">{{ page.title }}</h2>
+                    <time datetime="{{ page.date }}" class="text-sm text-gray-400">{{ page.date }}</time>
+                </header>
+                <p class="text-gray-300">Add text later</p>
+                <a href="{{ page.url }}" class="inline-block mt-4 text-blue-400 hover:text-blue-300 transition-colors">
+                    Read More →
+                </a>
+            </article>
+        {% endif %}
+    {% endfor %}
+</main>
+{% endblock %}

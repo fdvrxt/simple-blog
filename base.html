@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+{% block head %}{% include "partials/head.html" %}{% endblock %}
+<style>
+    pre, code {
+        margin-top: 0 !important;
+    }
+    .article-links a {
+        text-decoration: underline;
+        color: #93c5fd;
+    }
+
+    .article-links a:hover {
+        color: #60a5fa;
+    }
+
+    .article-links ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .article-links ol {
+        list-style-type: decimal;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .article-links li {
+        margin-bottom: 0.5rem;
+    }
+
+    .article-links img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    footer a {
+        text-decoration: underline;
+        color: #93c5fd;
+    }
+
+    footer a:hover {
+        color: #60a5fa;
+    }
+</style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+    {% include "partials/header.html" %}
+    {% block content %}{% endblock %}
+    {% include "partials/footer.html" %}
+</body>
+{% block scripts %}{% endblock %}
+</html>
