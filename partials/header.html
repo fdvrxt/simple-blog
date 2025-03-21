@@ -2,9 +2,16 @@
     <div class="container mx-auto max-w-5xl flex justify-between items-center">
         <a href="/" class="text-2xl font-semibold">{{ site.title }}</a>
         <nav class="flex space-x-4">
-            <a href="/" class="hover:text-gray-400">Home</a>
-            <a href="/about" class="hover:text-gray-400">About</a>
-            <a href="/contact" class="hover:text-gray-400">Contact</a>
+			{% if existsIn(site, "params") %}
+				{% if existsIn(site.params, "menus") %}
+					{% for menu in site.params.menus %}
+						<a href="{{ menu.target }}" class="hover:text-gray-400">{{ menu.name }}</a>
+					{% endfor %}
+				{% endif %}
+			{% endif %}
+			
         </nav>
+		
+		
     </div>
 </header>

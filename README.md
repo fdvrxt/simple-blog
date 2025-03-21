@@ -9,11 +9,15 @@ Header menus can be passed through `params.menus` in `config.json`.
 ```
 "params": 
 {
-	"menus": 
-	{
-		"Home"		: "/",
-		"About"		: "/about.html",
-		"Contact"	: "/contact.html"
-	}
+	"menus": [
+		{
+			"name": "Home",
+			"target": "/"
+		},
+		{
+			"name": "Contact",
+			"target": "/contact.html"
+		}
+	]
 }
 ```

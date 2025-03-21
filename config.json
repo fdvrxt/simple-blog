@@ -2,7 +2,8 @@
     "templates": 
     {
         "index" : "templates/index.html",
-        "post"  : "templates/post.html"  
+        "post"  : "templates/post.html",
+		"page"	: "templates/page.html"
     },
 	"default": "post",
     "assets-directory": "assets"

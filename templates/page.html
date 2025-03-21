@@ -1,0 +1,16 @@
+{% extends "../base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+{% endblock %}
+{% block content %}
+<main class="container mx-auto px-4 py-8 grid place-items-center">
+    <article class="prose prose-lg max-w-3xl w-full break-words break-normal article-links">
+        <header class="mb-4">
+            <h1 class="text-3xl font-semibold"> {{ page.title }}</h1>
+        </header>
+        {{ page.content }}
+    </article>
+</main>
+{% endblock %}
